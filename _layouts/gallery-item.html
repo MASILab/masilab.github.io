@@ -27,6 +27,10 @@ layout: default
   in the page body below the front matter as usual.
 {% endcomment %}
 
+{% if page.title %}
+<h1>{{ page.title }}</h1>
+{% endif %}
+
 <div class="gallery-item-header">
   {% if page.image %}
     <div class="gallery-item-hero">
@@ -50,8 +54,11 @@ layout: default
 
       {% if page.repo %}
         <a class="gallery-item-repo" href="{{ page.repo }}" target="_blank" rel="noopener">
-          View source ↗
+          View repository ↗
         </a>
+      {% endif %}
+      {% if page.license %}
+        <p class="gallery-item-tag">{{ page.license }}</p>
       {% endif %}
     </div>
   {% endif %}

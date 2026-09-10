@@ -18,8 +18,8 @@ layout: default
     title: Tools
     nav_order: 2
     gallery_items:
-      - name: toolname
-        description: One line on what it does.
+      - title: toolname
+        summary: One line on what it does.
         image: /assets/images/tools/toolname.png
         url: /docs/toolname/
         repo: https://github.com/yourlab/toolname
@@ -57,7 +57,7 @@ layout: default
     ---
     title: fixelflow
     parent: Tools
-    description: Fixel-based analysis pipeline with automated QC reporting.
+    summary: Fixel-based analysis pipeline with automated QC reporting.
     image: /assets/images/tools/fixelflow.png
     repo: https://github.com/yourlab/fixelflow
     tags: [dMRI, fixel, Snakemake]
@@ -65,12 +65,16 @@ layout: default
 
   This only collects direct children, matching how has_children/parent
   nesting works — grandchildren (three-level nesting) are not pulled in
-  automatically. A child's `description` falls back to `summary` (the
+  automatically. A child's `summary` falls back to `summary` (the
   field just-the-docs' own children-nav blurb uses), so pages that
   already have a `summary:` for the built-in nav need no extra field.
   Pages with `nav_exclude: true` are skipped. Ordering follows
   `nav_order`, same as the sidebar.
 {% endcomment %}
+
+{% if page.title %}
+<h1>{{ page.title }}</h1>
+{% endif %}
 
 {{ content }}
 
@@ -95,8 +99,8 @@ layout: default
 {% if gallery_items and gallery_items.size > 0 %}
 <div class="gallery-grid">
   {% for item in gallery_items %}
-  {% assign gallery_name = item.name | default: item.title %}
-  {% assign gallery_desc = item.description | default: item.summary %}
+  {% assign gallery_name = item.title %}
+  {% assign gallery_desc = item.summary %}
   <div class="gallery-card">
     <a class="gallery-card-link" href="{{ item.url | relative_url | }}">
       <div class="gallery-card-thumb">
