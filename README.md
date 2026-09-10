@@ -1,3 +1,30 @@
+# MASI Lab Gallery
+
+## Local installation and usage
+
+Install Ruby and Bundler on your system. The default version of Ruby found in Ubuntu's apt repository is outdated.
+
+```bash
+sudo apt install libffi-dev libyaml-dev
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+source ~/.bashrc
+rbenv install 3.3
+rbenv global 3.3.12
+```
+
+Change the directory to this project and set the path to a local directory.Then install the dependencies for this project:
+
+```bash
+bundle config set --local path 'vendor/bundle'
+bundle install
+```
+
+Run the site locally and you should see the site at `http://localhost:4000/`:
+
+```bash
+bundle exec jekyll serve
+```
+
 # just-the-docs-template
 
 This is a *bare-minimum* template to create a [Jekyll] site that:

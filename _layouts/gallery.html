@@ -1,0 +1,131 @@
+---
+layout: default
+---
+
+{% comment %}
+  Gallery layout for just-the-docs.
+
+  Inherits all site chrome (head, sidebar, header, breadcrumbs, footer,
+  search) from `default.html`, exactly the way home.html / page.html /
+  post.html do — it just replaces {{ content }} with a card grid, then
+  still renders {{ content }} underneath in case the page also has
+  prose (an intro paragraph, usage notes, etc.) below the front matter.
+
+  Usage — either supply items directly in page front matter:
+
+    ---
+    layout: gallery
+    title: Tools
+    nav_order: 2
+    gallery_items:
+      - name: toolname
+        description: One line on what it does.
+        image: /assets/images/tools/toolname.png
+        url: /docs/toolname/
+        repo: https://github.com/yourlab/toolname
+        tags: [dMRI, registration]
+    ---
+
+  ...or point at a data file (site/_data/tools.yml) with the same
+  per-item shape, for a lab-wide roster you maintain in one place and
+  reuse across pages:
+
+    ---
+    layout: gallery
+    title: Tools
+    gallery_data: tools
+    ---
+
+  Only `name` and `url` are required per item; everything else is
+  optional and simply omitted from the card if absent.
+
+  THIRD MODE — auto-collect child pages: if you set neither
+  `gallery_items` nor `gallery_data`, the layout falls back to finding
+  every page whose front matter `parent:` matches this page's `title:`
+  (exactly the same relationship just-the-docs itself uses to build the
+  sidebar tree — see components/children_nav.html), and builds cards
+  from each child's own front matter:
+
+    ---
+    layout: gallery
+    title: Tools
+    has_children: true
+    nav_order: 2
+    ---
+
+    # tools/fixelflow.md
+    ---
+    title: fixelflow
+    parent: Tools
+    description: Fixel-based analysis pipeline with automated QC reporting.
+    image: /assets/images/tools/fixelflow.png
+    repo: https://github.com/yourlab/fixelflow
+    tags: [dMRI, fixel, Snakemake]
+    ---
+
+  This only collects direct children, matching how has_children/parent
+  nesting works — grandchildren (three-level nesting) are not pulled in
+  automatically. A child's `description` falls back to `summary` (the
+  field just-the-docs' own children-nav blurb uses), so pages that
+  already have a `summary:` for the built-in nav need no extra field.
+  Pages with `nav_exclude: true` are skipped. Ordering follows
+  `nav_order`, same as the sidebar.
+{% endcomment %}
+
+{{ content }}
+
+{% assign gallery_items = page.gallery_items %}
+{% if page.gallery_data %}
+  {% assign gallery_items = site.data[page.gallery_data] %}
+{% endif %}
+
+{% if gallery_items == nil %}
+  {% comment %}
+    Mirrors the source just-the-docs itself uses for parent/child
+    lookups: the current collection if this page belongs to one,
+    otherwise all non-collection pages.
+  {% endcomment %}
+  {% assign gallery_source = site[page.collection] | default: site.html_pages %}
+  {% assign gallery_items = gallery_source
+       | where_exp: "item", "item.parent == page.title"
+       | where_exp: "item", "item.nav_exclude != true"
+       | sort: "nav_order" %}
+{% endif %}
+
+{% if gallery_items and gallery_items.size > 0 %}
+<div class="gallery-grid">
+  {% for item in gallery_items %}
+  {% assign gallery_name = item.name | default: item.title %}
+  {% assign gallery_desc = item.description | default: item.summary %}
+  <div class="gallery-card">
+    <a class="gallery-card-link" href="{{ item.url | relative_url | }}">
+      <div class="gallery-card-thumb">
+        {% if item.image %}
+          <img src="{{ item.image | relative_url }}" alt="{{ gallery_name }} preview" loading="lazy">
+        {% else %}
+          <div class="gallery-card-thumb-placeholder" aria-hidden="true">{{ gallery_name | slice: 0 }}</div>
+        {% endif %}
+      </div>
+      <div class="gallery-card-body">
+        <h3 class="gallery-card-title">{{ gallery_name }}</h3>
+        {% if gallery_desc %}
+          <p class="gallery-card-desc">{{ gallery_desc }}</p>
+        {% endif %}
+        <!-- {% if item.tags %}
+          <ul class="gallery-card-tags">
+            {% for tag in item.tags %}
+              <li class="gallery-card-tag">{{ tag }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %} -->
+      </div>
+    </a>
+    {% if item.repo %}
+      <a class="gallery-card-repo" href="{{ item.repo }}" target="_blank" rel="noopener">
+        Source ↗
+      </a>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,60 @@
+---
+layout: default
+---
+
+{% comment %}
+  Layout for an individual gallery entry's own docs page (e.g. one tool's
+  page under a Tools gallery). Inherits chrome from default.html like
+  every other layout here, and adds a consistent header block above the
+  page content built from the same front matter fields the parent
+  gallery.html layout reads to build that tool's card:
+
+    ---
+    layout: gallery-item
+    title: fixelflow
+    parent: Tools
+    nav_order: 1
+    description: Fixel-based analysis pipeline with automated QC reporting.
+    image: /assets/images/tools/fixelflow.png
+    repo: https://github.com/yourlab/fixelflow
+    tags: [dMRI, fixel, Snakemake]
+    ---
+
+  All fields are optional except title/parent (needed for the sidebar and
+  for gallery.html's auto-collect mode to find this page at all). Nothing
+  here duplicates content — `description` is meant to stay a short
+  one-liner (it's what shows on the gallery card); put the real writeup
+  in the page body below the front matter as usual.
+{% endcomment %}
+
+<div class="gallery-item-header">
+  {% if page.image %}
+    <div class="gallery-item-hero">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }} preview">
+    </div>
+  {% endif %}
+
+  {% if page.description %}
+    <p class="gallery-item-desc">{{ page.description }}</p>
+  {% endif %}
+
+  {% if page.tags or page.repo %}
+    <div class="gallery-item-meta">
+      {% if page.tags %}
+        <ul class="gallery-item-tags">
+          {% for tag in page.tags %}
+            <li class="gallery-item-tag">{{ tag }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if page.repo %}
+        <a class="gallery-item-repo" href="{{ page.repo }}" target="_blank" rel="noopener">
+          View source ↗
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{{ content }}
