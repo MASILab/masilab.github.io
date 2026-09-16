@@ -8,6 +8,9 @@ url: https://masilab.github.io
 baseurl: ""
 
 logo: "/assets/images/masi_logo_light.png"
+
+# Vanderbilt-branded color scheme, defined in _sass/color_schemes/masi.scss
+color_scheme: masi
 favicon_ico: "/assets/images/favicon.ico"
 
 permalink: pretty 
@@ -39,13 +42,15 @@ footer_content: "&copy; 2026 MASI Lab"
 # Add callouts that can be used like this: 
 # {: .warning}
 # Here's a warning!
+# Colors below are brand ramps defined in _sass/custom/setup.scss
+# (highlight / sky / sage), not just-the-docs' stock red/blue/green.
 callouts:
   warning:
     title: Warning
-    color: red
+    color: highlight
   note:
     title: Note
-    color: blue
+    color: sky
   citation:
     title: Citation
-    color: green
+    color: sage

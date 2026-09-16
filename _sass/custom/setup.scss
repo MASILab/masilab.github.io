@@ -1,0 +1,52 @@
+// ---------------------------------------------------------------------------
+// MASI Lab Gallery — Vanderbilt brand setup
+//
+// just-the-docs imports this file BEFORE its own color schemes, so anything
+// declared here is picked up by the theme's `!default` variables.
+// Palette and typefaces come from the Vanderbilt Brand Style Guide:
+//   https://brand.vanderbilt.edu/color/
+//   https://brand.vanderbilt.edu/typography/
+// ---------------------------------------------------------------------------
+
+// --- Vanderbilt brand palette (exact values from the style guide) ----------
+$vu-gold: #cfae70; // Flat Gold — Pantone 4024 C
+$vu-black: #1c1c1c; // Black — Pantone Black C
+$vu-white: #ffffff;
+$vu-grey-dark: #777777; // Dark Gray
+$vu-grey-light: #e4e4e4; // Light Gray
+$vu-sand: #e0d5c0; // Sand
+$vu-cream: #f5f3ef; // Cream
+$vu-sky: #b3c9cd; // Sky
+$vu-highlight: #ecb748; // Highlight
+$vu-oak: #946e24; // Oak — 4.65:1 on white, the guide's AA text pairing
+$vu-sage: #8ba18e; // Sage
+
+// --- Derived UI tones ------------------------------------------------------
+// The guide's eleven colors don't cover every UI state (hover, muted text,
+// tints), so each value below is derived from a brand color above and written
+// out as a literal. Contrast ratios are against white / Cream #f5f3ef.
+$vu-oak-dark: #6f531b; // darken(Oak, 9%) — link hover — 7.17 / 6.47
+$vu-text-muted: #535353; // darken(Dark Gray, 14%) — secondary text — 7.69 / 6.94
+$vu-gold-wash: #ebe1ce; // mix(Flat Gold, Cream, 26%) — active-nav wash
+
+// --- Callout ramps ---------------------------------------------------------
+// just-the-docs builds each callout from $<name>-000 (hairline border) and
+// $<name>-300 (left rule + title). These names are what the `callouts:` block
+// in _config.yml refers to.
+// The -300 tones are darkened versions of their brand color, chosen so the
+// callout titles clear WCAG AA (4.5:1) on both white and Cream.
+$sky-000: $vu-sky;
+$sky-300: #2f5a63; // 7.60 on white
+$sage-000: $vu-sage;
+$sage-300: #3f5744; // 7.90 on white
+$highlight-000: $vu-highlight;
+$highlight-300: #8a5f0c; // 5.64 on white
+
+// --- Typography ------------------------------------------------------------
+// Inter for body and UI, Libre Caslon Text for page headings, Antonio for the
+// site title. Loaded in _includes/head_custom.html; the fallbacks are the
+// guide's own universal alternates (Arial / Times / Impact).
+$body-font-family: "Inter", -apple-system, blinkmacsystemfont, "Segoe UI",
+  roboto, "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
+$serif-font-family: "Libre Caslon Text", "Times New Roman", times, serif;
+$display-font-family: "Antonio", impact, haettenschweiler, sans-serif;

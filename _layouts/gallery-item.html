@@ -14,7 +14,7 @@ layout: default
     title: fixelflow
     parent: Tools
     nav_order: 1
-    description: Fixel-based analysis pipeline with automated QC reporting.
+    summary: Fixel-based analysis pipeline with automated QC reporting.
     image: /assets/images/tools/fixelflow.png
     repo: https://github.com/yourlab/fixelflow
     tags: [dMRI, fixel, Snakemake]
@@ -22,9 +22,13 @@ layout: default
 
   All fields are optional except title/parent (needed for the sidebar and
   for gallery.html's auto-collect mode to find this page at all). Nothing
-  here duplicates content — `description` is meant to stay a short
-  one-liner (it's what shows on the gallery card); put the real writeup
-  in the page body below the front matter as usual.
+  here duplicates content — `summary` is meant to stay a short one-liner
+  (it's the same field gallery.html puts on this tool's card, and the one
+  just-the-docs' own child-nav blurb reads); put the real writeup in the
+  page body below the front matter as usual.
+
+  Note `summary`, not `description`: jekyll-seo-tag claims `description`
+  for the page's meta description, so the two are deliberately separate.
 {% endcomment %}
 
 {% if page.title %}
@@ -38,8 +42,8 @@ layout: default
     </div>
   {% endif %}
 
-  {% if page.description %}
-    <p class="gallery-item-desc">{{ page.description }}</p>
+  {% if page.summary %}
+    <p class="gallery-item-desc">{{ page.summary }}</p>
   {% endif %}
 
   {% if page.tags or page.repo %}

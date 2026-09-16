@@ -9,7 +9,7 @@ license: "BSD 3-Clause License"
 ---
 
 {: .note}
-[SLANT-TICV](/brain/slant-ticv) and [UNesT](/brain/unest) are updated models trained on the same data as SLANT.
+[SLANT-TICV](https://github.com/MASILab/SLANTbrainSeg_TICV) and [UNesT](https://github.com/MASILab/UNesT) are updated models trained on the same data as SLANT.
 
 SLANT is a tile-based deep learning model that segments 133 regions of interest from a T1-weighted MRI. These labels are based on the [BrainCOLOR](http://braincolor.mindboggle.info/) protocol.
 

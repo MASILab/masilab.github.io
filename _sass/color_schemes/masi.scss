@@ -1,0 +1,29 @@
+// ---------------------------------------------------------------------------
+// MASI Lab Gallery color scheme.
+//
+// Imported after just-the-docs' own color_schemes/light.scss, so these
+// assignments win outright. Every value resolves to a Vanderbilt brand color
+// (or a documented derivative) defined in _sass/custom/setup.scss.
+// Selected by `color_scheme: masi` in _config.yml.
+// ---------------------------------------------------------------------------
+
+$color-scheme: light;
+
+$body-background-color: $vu-white;
+$body-heading-color: $vu-black;
+$body-text-color: $vu-black;
+
+$link-color: $vu-oak; // 4.65:1 on white — the guide's AA pairing
+$nav-child-link-color: $vu-text-muted;
+
+$sidebar-color: $vu-cream;
+$border-color: $vu-sand;
+$feedback-color: $vu-gold-wash; // active nav item / expander hover
+
+$base-button-color: $vu-cream;
+$btn-primary-color: $vu-oak;
+
+$code-background-color: $vu-cream;
+$table-background-color: $vu-white;
+$search-background-color: $vu-white;
+$search-result-preview-color: $vu-text-muted;
