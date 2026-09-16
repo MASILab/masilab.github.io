@@ -157,6 +157,27 @@ h1,
   border-top: 1px solid $vu-sand;
 }
 
+// A quiet page-reload mascot in the shared sidebar footer. The image selection
+// happens client-side so no page needs its own cat metadata or build-time state.
+.masi-sidebar-cat {
+  display: flex;
+  align-items: flex-end;
+  min-height: 5.5rem;
+  margin-top: $sp-3;
+  pointer-events: none;
+
+  img {
+    display: block;
+    width: auto;
+    max-width: 7rem;
+    max-height: 6.5rem;
+    object-fit: contain;
+    object-position: left bottom;
+    border-radius: 0.35rem;
+    opacity: 0.9;
+  }
+}
+
 // ===========================================================================
 // 2. GALLERY COMPONENTS
 // ===========================================================================

@@ -11,3 +11,34 @@
 <p class="text-small mb-0">
   <a href="https://my.vanderbilt.edu/masi/">MASI Lab</a> &middot; Vanderbilt University
 </p>
+
+<div class="masi-sidebar-cat" aria-hidden="true">
+  <img id="masi-sidebar-cat-image" src="{{ '/assets/images/cats/tabby.png' | relative_url }}" alt="">
+</div>
+
+<script>
+  (function () {
+    var cats = [
+      "{{ '/assets/images/cats/tabby.png' | relative_url }}",
+      "{{ '/assets/images/cats/tuxedo.png' | relative_url }}",
+      "{{ '/assets/images/cats/orange-white.png' | relative_url }}",
+      "{{ '/assets/images/cats/calico.png' | relative_url }}",
+      "{{ '/assets/images/cats/ai-imaging-researcher.png' | relative_url }}",
+      "{{ '/assets/images/cats/ai-network-researcher.png' | relative_url }}",
+      "{{ '/assets/images/cats/ai-notebook-researcher.png' | relative_url }}",
+      "{{ '/assets/images/cats/ai-journal-scholar.png' | relative_url }}",
+      "{{ '/assets/images/cats/ai-manuscript-scholar.png' | relative_url }}",
+      "{{ '/assets/images/cats/ai-library-scholar.png' | relative_url }}"
+    ];
+    var cat = document.getElementById("masi-sidebar-cat-image");
+    var previous = Number(sessionStorage.getItem("masi-sidebar-cat-index"));
+    var next = Math.floor(Math.random() * cats.length);
+
+    if (cats.length > 1 && Number.isInteger(previous)) {
+      next = (previous + 1 + Math.floor(Math.random() * (cats.length - 1))) % cats.length;
+    }
+
+    sessionStorage.setItem("masi-sidebar-cat-index", String(next));
+    if (cat) cat.src = cats[next];
+  }());
+</script>
