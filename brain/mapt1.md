@@ -3,6 +3,7 @@ title: MAP T1 Mapping
 parent: Brain
 layout: gallery-item
 summary: Maximum a posteriori quantitative T1 mapping with uncertainty estimation
+image: /assets/images/brain/mapt1.png
 repo: https://github.com/MASILab/map_t1_mapping
 license: "MIT License"
 ---
