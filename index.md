@@ -13,10 +13,9 @@ below has a published method behind it, a public repository, and — in most cas
 a pre-built container image, so you can reproduce our computing environment
 instead of rebuilding it.
 
-These tools come out of the Center for Computational Imaging, founded at
-Vanderbilt in 2010. Several of the pipelines here have been in continuous
-operation for more than fifteen years, which is the reason we package them as
-containers rather than leaving them as code attached to a paper.
+Several of these pipelines have been in continuous operation for more than
+fifteen years, which is why we package them as containers rather than leaving
+them as code attached to a paper.
 
 New to these? [Running the tools](/running/) covers the container runtime, the
 bind-mount convention, and the GPU flags that every usage example assumes.
