@@ -3,6 +3,7 @@ title: Home
 heading: MASI Lab Gallery
 layout: gallery
 gallery_all: true
+gallery_compact: true
 nav_order: 1
 ---
 

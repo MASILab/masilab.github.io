@@ -37,7 +37,7 @@ nav_enabled: true
 heading_anchors: true
 
 # Footer
-footer_content: "&copy; 2026 MASI Lab"
+footer_content: "&copy; 2026 Vanderbilt University"
 
 # Add callouts that can be used like this: 
 # {: .warning}

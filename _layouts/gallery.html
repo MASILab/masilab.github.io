@@ -79,6 +79,11 @@ layout: default
   `title:` keeps driving the sidebar link, for pages that want a short
   nav label and a fuller headline.
 
+  Also unrelated: `gallery_compact: true` renders the same cards denser —
+  narrower columns, shorter thumbnails, clamped blurbs, and no repo link —
+  for a page showing the whole catalog at a glance rather than giving each
+  tool room. Styled by .gallery-grid-compact in _sass/custom/custom.scss.
+
   The parent/child mode only collects direct children, matching how
   has_children/parent nesting works — grandchildren (three-level
   nesting) are not pulled in automatically. A card's blurb comes from the child's `summary` (the
@@ -120,7 +125,11 @@ layout: default
 {% endif %}
 
 {% if gallery_items and gallery_items.size > 0 %}
-<div class="gallery-grid">
+{% assign gallery_grid_class = "gallery-grid" %}
+{% if page.gallery_compact %}
+  {% assign gallery_grid_class = "gallery-grid gallery-grid-compact" %}
+{% endif %}
+<div class="{{ gallery_grid_class }}">
   {% for item in gallery_items %}
   {% assign gallery_name = item.title %}
   {% assign gallery_desc = item.summary %}
@@ -147,7 +156,7 @@ layout: default
         {% endif %} -->
       </div>
     </a>
-    {% if item.repo %}
+    {% if item.repo and page.gallery_compact != true %}
       <a class="gallery-card-repo" href="{{ item.repo }}" target="_blank" rel="noopener">
         Source ↗
       </a>

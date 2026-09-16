@@ -283,6 +283,45 @@ h1,
   }
 }
 
+// --- compact variant -------------------------------------------------------
+// Used by the home page (`gallery_compact: true`), where the job is to show the
+// whole catalog at a glance rather than give each tool a full card. Same card
+// markup, denser: narrower columns, shorter thumbnails, a clamped blurb, and no
+// repo link — the tool's own page carries that.
+
+.gallery-grid-compact {
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 1rem;
+
+  .gallery-card-thumb {
+    aspect-ratio: 16 / 9;
+  }
+
+  .gallery-card-thumb-placeholder {
+    font-size: 1.75rem;
+  }
+
+  .gallery-card-body {
+    padding: 0.6rem 0.75rem 0.75rem;
+  }
+
+  .gallery-card-title {
+    margin-bottom: 0.2rem;
+    font-size: 0.95rem;
+  }
+
+  .gallery-card-desc {
+    display: -webkit-box;
+    margin-bottom: 0;
+    overflow: hidden;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+}
+
 // --- gallery-item.html — header block on an individual tool's own page -----
 
 .gallery-item-header {
