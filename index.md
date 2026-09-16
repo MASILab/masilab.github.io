@@ -13,6 +13,18 @@ below has a published method behind it, a public repository, and — in most cas
 a pre-built container image, so you can reproduce our computing environment
 instead of rebuilding it.
 
-If you haven't run one of these before, [Running the tools](/running/) covers the
-container runtime, the bind-mount convention, and the GPU flags that every usage
-example here assumes.
+These tools come out of the Center for Computational Imaging, founded at
+Vanderbilt in 2010. Several of the pipelines here have been in continuous
+operation for more than fifteen years, which is the reason we package them as
+containers rather than leaving them as code attached to a paper.
+
+New to these? [Running the tools](/running/) covers the container runtime, the
+bind-mount convention, and the GPU flags that every usage example assumes.
+
+Elsewhere: [about the lab](https://my.vanderbilt.edu/masi/about-us/) &middot;
+[people](https://my.vanderbilt.edu/masi/people/) &middot;
+[our roots](https://my.vanderbilt.edu/masi/about-us/our-roots/) &middot;
+[research](https://my.vanderbilt.edu/masi/research/) &middot;
+[publications](https://my.vanderbilt.edu/masi/publications/) &middot;
+[GitHub](https://github.com/MASILab)
+{: .fs-3 }
