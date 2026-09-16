@@ -63,9 +63,25 @@ layout: default
     tags: [dMRI, fixel, Snakemake]
     ---
 
-  This only collects direct children, matching how has_children/parent
-  nesting works — grandchildren (three-level nesting) are not pulled in
-  automatically. A card's blurb comes from the child's `summary` (the
+  FOURTH MODE — every tool on the site: set `gallery_all: true` to
+  collect every page using `layout: gallery-item`, regardless of which
+  category it sits under, sorted by title. This is what the home page
+  uses, so a new tool appears there the moment its page exists, without
+  anything being listed twice:
+
+    ---
+    layout: gallery
+    title: Home
+    gallery_all: true
+    ---
+
+  Unrelated to item collection, `heading:` overrides the <h1> text while
+  `title:` keeps driving the sidebar link, for pages that want a short
+  nav label and a fuller headline.
+
+  The parent/child mode only collects direct children, matching how
+  has_children/parent nesting works — grandchildren (three-level
+  nesting) are not pulled in automatically. A card's blurb comes from the child's `summary` (the
   field just-the-docs' own children-nav blurb uses), so pages that
   already have a `summary:` for the built-in nav need no extra field.
   Pages with `nav_exclude: true` are skipped. Ordering follows
@@ -73,7 +89,7 @@ layout: default
 {% endcomment %}
 
 {% if page.title %}
-<h1>{{ page.title }}</h1>
+<h1>{{ page.heading | default: page.title }}</h1>
 {% endif %}
 
 {{ content }}
@@ -90,10 +106,17 @@ layout: default
     otherwise all non-collection pages.
   {% endcomment %}
   {% assign gallery_source = site[page.collection] | default: site.html_pages %}
-  {% assign gallery_items = gallery_source
-       | where_exp: "item", "item.parent == page.title"
-       | where_exp: "item", "item.nav_exclude != true"
-       | sort: "nav_order" %}
+  {% if page.gallery_all %}
+    {% assign gallery_items = gallery_source
+         | where_exp: "item", "item.layout == 'gallery-item'"
+         | where_exp: "item", "item.nav_exclude != true"
+         | sort: "title" %}
+  {% else %}
+    {% assign gallery_items = gallery_source
+         | where_exp: "item", "item.parent == page.title"
+         | where_exp: "item", "item.nav_exclude != true"
+         | sort: "nav_order" %}
+  {% endif %}
 {% endif %}
 
 {% if gallery_items and gallery_items.size > 0 %}
