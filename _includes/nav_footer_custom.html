@@ -18,6 +18,12 @@
 
 <script>
   (function () {
+    // This include is rendered twice: once in the desktop sidebar and once in
+    // the mobile footer. Register one page-level rotation after both copies
+    // have been parsed, rather than running once for each rendered footer.
+    if (window.masiCatRotationInitialized) return;
+    window.masiCatRotationInitialized = true;
+
     var cats = [
       "{{ '/assets/images/cats/tabby.png' | relative_url }}",
       "{{ '/assets/images/cats/tuxedo.png' | relative_url }}",
@@ -64,31 +70,36 @@
       "{{ '/assets/images/cats/network-extra-14.png' | relative_url }}",
       "{{ '/assets/images/cats/network-extra-15.png' | relative_url }}"
     ];
-    // Just the Docs renders this shared footer in both the sidebar and the
-    // mobile page footer. Update every rendered copy so the visible cat
-    // changes at either breakpoint.
-    var catImages = document.querySelectorAll(".masi-sidebar-cat-image");
-    var previous = null;
-    var next = Math.floor(Math.random() * cats.length);
+    function rotateCats() {
+      var catImages = document.querySelectorAll(".masi-sidebar-cat-image");
+      var previous = null;
+      var next = Math.floor(Math.random() * cats.length);
 
-    try {
-      previous = Number(sessionStorage.getItem("masi-sidebar-cat-index"));
-    } catch (error) {
-      // Some privacy modes disable session storage; a random cat still works.
+      try {
+        previous = Number(sessionStorage.getItem("masi-sidebar-cat-index"));
+      } catch (error) {
+        // Some privacy modes disable session storage; a random cat still works.
+      }
+
+      if (cats.length > 1 && Number.isInteger(previous)) {
+        next = (previous + 1 + Math.floor(Math.random() * (cats.length - 1))) % cats.length;
+      }
+
+      try {
+        sessionStorage.setItem("masi-sidebar-cat-index", String(next));
+      } catch (error) {
+        // Keep the selected cat for this page even when storage is unavailable.
+      }
+
+      for (var i = 0; i < catImages.length; i += 1) {
+        catImages[i].src = cats[next];
+      }
     }
 
-    if (cats.length > 1 && Number.isInteger(previous)) {
-      next = (previous + 1 + Math.floor(Math.random() * (cats.length - 1))) % cats.length;
-    }
-
-    try {
-      sessionStorage.setItem("masi-sidebar-cat-index", String(next));
-    } catch (error) {
-      // Keep the selected cat for this page even when storage is unavailable.
-    }
-
-    for (var i = 0; i < catImages.length; i += 1) {
-      catImages[i].src = cats[next];
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", rotateCats);
+    } else {
+      rotateCats();
     }
   }());
 </script>
