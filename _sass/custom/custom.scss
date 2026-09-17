@@ -353,9 +353,11 @@ h1,
 
 .gallery-item-hero {
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
+  width: fit-content; // shrink the box to the image so narrow figures aren't letterboxed
+  max-width: 100%;
   text-align: center;
-  background: $vu-cream; // shows behind any letterboxed space around the image
+  background: $vu-cream;
   border: 1px solid $border-color;
   border-radius: 6px;
 
@@ -365,7 +367,6 @@ h1,
     height: auto;
     max-width: 100%;
     max-height: 320px; // raise/lower to change how large the image can get
-    margin: 0 auto;
   }
 }
 
