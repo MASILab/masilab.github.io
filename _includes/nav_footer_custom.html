@@ -9,7 +9,7 @@
   phone.
 {%- endcomment -%}
 <div class="masi-sidebar-cat" aria-hidden="true">
-  <img id="masi-sidebar-cat-image" src="{{ '/assets/images/cats/tabby.png' | relative_url }}" alt="">
+  <img class="masi-sidebar-cat-image" src="{{ '/assets/images/cats/tabby.png' | relative_url }}" alt="">
 </div>
 
 <p class="text-small mb-0">
@@ -64,15 +64,31 @@
       "{{ '/assets/images/cats/network-extra-14.png' | relative_url }}",
       "{{ '/assets/images/cats/network-extra-15.png' | relative_url }}"
     ];
-    var cat = document.getElementById("masi-sidebar-cat-image");
-    var previous = Number(sessionStorage.getItem("masi-sidebar-cat-index"));
+    // Just the Docs renders this shared footer in both the sidebar and the
+    // mobile page footer. Update every rendered copy so the visible cat
+    // changes at either breakpoint.
+    var catImages = document.querySelectorAll(".masi-sidebar-cat-image");
+    var previous = null;
     var next = Math.floor(Math.random() * cats.length);
+
+    try {
+      previous = Number(sessionStorage.getItem("masi-sidebar-cat-index"));
+    } catch (error) {
+      // Some privacy modes disable session storage; a random cat still works.
+    }
 
     if (cats.length > 1 && Number.isInteger(previous)) {
       next = (previous + 1 + Math.floor(Math.random() * (cats.length - 1))) % cats.length;
     }
 
-    sessionStorage.setItem("masi-sidebar-cat-index", String(next));
-    if (cat) cat.src = cats[next];
+    try {
+      sessionStorage.setItem("masi-sidebar-cat-index", String(next));
+    } catch (error) {
+      // Keep the selected cat for this page even when storage is unavailable.
+    }
+
+    for (var i = 0; i < catImages.length; i += 1) {
+      catImages[i].src = cats[next];
+    }
   }());
 </script>
