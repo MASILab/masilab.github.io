@@ -3,7 +3,7 @@ title: Francois Special
 parent: Brain
 layout: gallery-item
 summary: Fusion of four tractography/connectome pipelines (TractoFlow, RBx-Flow, Tractometry-Flow, Connectoflow)
-image: /assets/images/brain/francois-special.svg
+image: /assets/images/brain/francois-special-art.png
 repo: https://github.com/MASILab/francois_special_spider
 license: "See repository"
 ---
