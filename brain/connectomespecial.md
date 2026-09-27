@@ -3,6 +3,7 @@ title: Connectome Special
 parent: Brain
 layout: gallery-item
 summary: Probabilistic tractography and graph measures (connectome) from dMRI
+image: /assets/images/brain/connectome-special.svg
 repo: https://github.com/nancynewlin-masi/ConnectomeSpecial
 license: "See repository"
 ---

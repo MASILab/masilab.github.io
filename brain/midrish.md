@@ -3,6 +3,7 @@ title: MidRISH
 parent: Brain
 layout: gallery-item
 summary: Cross-site harmonization of diffusion MRI via rotationally invariant harmonics
+image: /assets/images/brain/midrish.svg
 repo: https://github.com/nancynewlin-masi/MidRISH
 license: "See repository"
 ---
