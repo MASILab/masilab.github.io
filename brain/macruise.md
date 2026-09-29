@@ -2,6 +2,7 @@
 title: MaCRUISE
 parent: Brain
 layout: gallery-item
+snake: true
 summary: Consistent cortical reconstruction and multi-atlas brain segmentation
 image: /assets/images/brain/macruise.jpg
 repo: https://github.com/MASILab/MaCRUISE

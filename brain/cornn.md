@@ -2,6 +2,7 @@
 title: CoRNN
 parent: Brain
 layout: gallery-item
+snake: true
 summary: Convolutional-recurrent neural network tractography on T1-weighted MRI
 image: /assets/images/brain/cornn.png
 repo: https://github.com/MASILab/cornn_tractography

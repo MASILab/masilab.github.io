@@ -2,6 +2,7 @@
 title: BRAID
 parent: Brain
 layout: gallery-item
+snake: true
 summary: Brain age identification from diffusion MRI
 image: /assets/images/brain/braid.png
 repo: https://github.com/MASILab/BRAID

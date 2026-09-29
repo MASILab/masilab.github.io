@@ -2,6 +2,7 @@
 title: UNesT
 parent: Brain
 layout: gallery-item
+snake: true
 summary: Transformer-based whole brain, renal, and multi-organ segmentation
 image: /assets/images/brain/unest.png
 repo: https://github.com/MASILab/UNesT

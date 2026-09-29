@@ -2,6 +2,7 @@
 title: SLANT
 parent: Brain
 layout: gallery-item
+snake: true
 summary: The original BrainCOLOR segmentation from T1-weighted MRI
 image: /assets/images/brain/slant.jpg
 repo: https://github.com/MASILab/SLANTbrainSeg

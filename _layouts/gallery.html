@@ -129,6 +129,12 @@ layout: default
 {% if page.gallery_compact %}
   {% assign gallery_grid_class = "gallery-grid gallery-grid-compact" %}
 {% endif %}
+{% comment %}
+  Snake badge — small mark on the top-right of a card thumbnail for tools
+  that are registered in the MASI Snakemake workflow. A page opts in with
+  `snake: true` in its front matter.
+{% endcomment %}
+{% assign snake_svg = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 19.5 C12 21.5 16.5 19.5 15.5 15.5 C14.8 12.8 10 13.5 8.5 11.5 C7 9.5 9.5 6.5 13 6.5" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14.6" cy="6.2" r="2.6" fill="currentColor"/><circle cx="15.4" cy="5.6" r="0.6" fill="#fff"/><path d="M17 4.6 L20 3.2 M17 4.6 L20.2 5.4" stroke="#c0392b" stroke-width="1.3" stroke-linecap="round"/></svg>' %}
 <div class="{{ gallery_grid_class }}">
   {% for item in gallery_items %}
   {% assign gallery_name = item.title %}
@@ -140,6 +146,9 @@ layout: default
           <img src="{{ item.image | relative_url }}" alt="{{ gallery_name }} preview" loading="lazy">
         {% else %}
           <div class="gallery-card-thumb-placeholder" aria-hidden="true">{{ gallery_name | slice: 0 }}</div>
+        {% endif %}
+        {% if item.snake %}
+          <span class="gallery-card-snake" title="MASI Snakemake Compatible">{{ snake_svg }}</span>
         {% endif %}
       </div>
       <div class="gallery-card-body">

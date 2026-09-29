@@ -2,6 +2,7 @@
 title: PreQual
 parent: Brain
 layout: gallery-item
+snake: true
 summary: Integrated preprocessing and quality assurance of diffusion weighted MRI
 image: /assets/images/brain/prequal.png
 repo: https://github.com/MASILab/PreQual

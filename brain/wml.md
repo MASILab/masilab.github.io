@@ -2,6 +2,7 @@
 title: White Matter Learning
 parent: Brain
 layout: gallery-item
+snake: true
 summary: White matter bundle segmentation from T1-weighted MRI
 image: /assets/images/brain/wml.png
 repo: https://github.com/MASILab/WM_learning_release
