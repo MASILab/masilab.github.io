@@ -3,7 +3,7 @@ title: HARFI
 parent: Brain
 layout: gallery-item
 summary: High angular resolution functional imaging for fMRI
-image: /assets/images/brain/harfi-art.png
+image: /assets/images/brain/harfi.jpg
 repo: https://github.com/MASILab/HARFI_Singularity
 license: "MIT License"
 ---

@@ -3,7 +3,7 @@ title: DeepMSMT-CSD
 parent: Brain
 layout: gallery-item
 summary: Learning multi-shell MT-CSD FODs from single-shell DW-MRI
-image: /assets/images/brain/deepmsmtcsd-art.png
+image: /assets/images/brain/deepmsmtcsd.jpg
 repo: https://github.com/MASILab/spie_2020_mtcsd_dl
 license: "See repository"
 ---
