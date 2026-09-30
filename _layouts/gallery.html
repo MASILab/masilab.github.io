@@ -147,9 +147,6 @@ layout: default
         {% else %}
           <div class="gallery-card-thumb-placeholder" aria-hidden="true">{{ gallery_name | slice: 0 }}</div>
         {% endif %}
-        {% if item.snake %}
-          <span class="gallery-card-snake" title="MASI Snakemake Compatible">{{ snake_svg }}</span>
-        {% endif %}
       </div>
       <div class="gallery-card-body">
         <h3 class="gallery-card-title">{{ gallery_name }}</h3>
@@ -163,6 +160,9 @@ layout: default
             {% endfor %}
           </ul>
         {% endif %} -->
+        {% if item.snake %}
+          <span class="gallery-card-snake" title="MASI Snakemake Compatible">{{ snake_svg }}</span>
+        {% endif %}
       </div>
     </a>
     {% if item.repo and page.gallery_compact != true %}
