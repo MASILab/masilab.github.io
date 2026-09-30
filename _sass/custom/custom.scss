@@ -238,19 +238,21 @@ h1,
   }
 }
 
-// Snakemake badge — small cream circle, top-right corner of a card
-// thumbnail, on tools that are registered in the MASI Snakemake
-// workflow (opt-in via `snake: true` front matter).
+// Snakemake badge — small cream circle, bottom-right corner of a card
+// thumbnail (the lower area of these figures is usually plain white, so the
+// badge sits in the empty space rather than over the image content), on tools
+// that are registered in the MASI Snakemake workflow (opt-in via `snake: true`
+// front matter). The snake mark is green.
 .gallery-card-snake {
   position: absolute;
-  top: 6px;
+  bottom: 6px;
   right: 6px;
   width: 26px;
   height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $vu-black;
+  color: #2e7d32;
   background: rgba($vu-cream, 0.92);
   border: 1px solid $vu-sand;
   border-radius: 50%;
