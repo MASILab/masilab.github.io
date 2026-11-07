@@ -16,7 +16,7 @@ UNesT (local spatial representation learning with a hierarchical Transformer) is
 
 ## Usage
 
-Whole brain segmentation runs from a pre-built Singularity image (download the `.sif` from the [repository](https://github.com/MASILab/UNesT/tree/main/wholebrainSeg)):
+Whole brain segmentation runs from a pre-built Singularity image, available on [Zenodo](https://zenodo.org/records/24028440) (DOI: [10.5281/zenodo.24028440](https://doi.org/10.5281/zenodo.24028440)); source code is in the [repository](https://github.com/MASILab/UNesT):
 
 ```bash
 singularity run -e --contain \
